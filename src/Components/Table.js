@@ -5,14 +5,31 @@ import '../CSS/Main.css';
 
 const App = () => {
 
+
+  const Checkbox = ({ checked }) => (
+    <div className="checkbox">
+      <input type="checkbox" checked={checked} readOnly />
+      <div className="checkbox-square"></div>
+    </div>
+  );
+
   // Right div table data
   const initialRightTableData = [
-    ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
-    ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5'],
-    ['Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10'],
-    ['Data 11', 'Data 12', 'Data 13', 'Data 14', 'Data 15'],
-    ['Data 16', 'Data 17', 'Data 18', 'Data 19', 'Data 20'],
+    ['Column 1'],
+    ['Data 1'],
+    ['Data 6'],
+    ['Data 11'],
+    ['Data 16'],
   ];
+
+  
+  // Generate unique IDs for the checkboxes
+  const updatedRightTableData = initialRightTableData.map((row) =>
+    row.map((cell) => ({
+    //  id: uuidv4(), // Generate a unique ID for each checkbox
+      content: cell,
+    }))
+  );
 
   const [rightTableData, setRightTableData] = useState(initialRightTableData);
 
@@ -319,17 +336,20 @@ const App = () => {
           </select>
         </div>
       </div>
-
       <div style={{ flex: '1', width: '50%', backgroundColor: '#e0e0e0', padding: '20px', overflowX: 'auto' }}>
         {/* Content for the right div */}
         <h2>Right Div with Table</h2>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ minWidth: '600px', width: '100%', borderSpacing: '10px' }}>
             <tbody>
-              {rightTableData.map((row, rowIndex) => (
+              {updatedRightTableData.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
+                    <td key={cell.id}>
+                      {/* Render a checkbox for each cell with the unique ID */}
+                      <input type="checkbox" id={cell.id} />
+                      <label htmlFor={cell.id}>{cell.content}</label>
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -341,6 +361,8 @@ const App = () => {
           <button onClick={deleteRightTableColumn}>Delete Column (-)</button>
         </div>
       </div>
+
+
     </div>
   );
 };

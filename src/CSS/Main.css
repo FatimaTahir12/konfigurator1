@@ -4,6 +4,36 @@
 
 /* Custom CSS for table responsiveness */
 
+/* ... (existing CSS styles) */
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkbox-square {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  margin-right: 6px;
+  position: relative;
+}
+
+.checkbox input[type="checkbox"]:checked + .checkbox-square::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+}
+
+
 .Main-div {
   display: flex;
   justify-content: center; /* Center the child elements horizontally */
@@ -19,13 +49,7 @@
   height: 100%; /* Set the height of both inner divs to be equal */
 }
 
-.Main-div > div:first-child {
-  background-color: #f0f0f0;
-}
 
-.Main-div > div:last-child {
-  background-color: #e0e0e0;
-}
 
 /* Add styles for buttons and select */
 .newbtn {
