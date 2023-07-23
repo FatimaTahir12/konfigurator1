@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTable } from 'react-table';
 import '../CSS/Main.css';
+
 const ResponsiveTable = ({ columns, data, onAddRow, onRemoveRow }) => {
   const {
     getTableProps,
@@ -20,7 +21,7 @@ const ResponsiveTable = ({ columns, data, onAddRow, onRemoveRow }) => {
           {headerGroups.map((headerGroup, rowIndex) => (
             <tr
               {...headerGroup.getHeaderGroupProps()}
-              style={{ height: rowIndex === 0 ? '20px' : rowIndex === 1 ? '30px' : '40px' }}
+              style={{ height: '20px', fontSize: '12px', fontWeight: 'bold' }}
             >
               {headerGroup.headers.map((column, colIndex) => (
                 <th
@@ -29,8 +30,8 @@ const ResponsiveTable = ({ columns, data, onAddRow, onRemoveRow }) => {
                     column.Header === 'Pos'
                       ? 'regular-header'
                       : column.Header === 'Keys'
-                      ? 'blue-header grey-header'
-                      : 'blue-header'
+                        ? 'blue-header grey-header'
+                        : 'blue-header'
                   }
                   colSpan={column.Header === 'Keys' ? 3 : 1}
                   rowSpan={
@@ -38,6 +39,7 @@ const ResponsiveTable = ({ columns, data, onAddRow, onRemoveRow }) => {
                       ? keysRowCount * 10
                       : 1
                   }
+                  style={{ padding: '5px' }}
                 >
                   {column.render('Header')}
                 </th>

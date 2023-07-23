@@ -3,6 +3,40 @@
 /* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" /> */
 
 /* Custom CSS for table responsiveness */
+
+.Main-div {
+  display: flex;
+  justify-content: center; /* Center the child elements horizontally */
+  align-items: center; /* Center the child elements vertically */
+  width: 90%;
+  margin: 20px auto; /* Add white space from top and bottom */
+}
+
+.Main-div > div {
+  flex: 1;
+  width: 50%;
+  padding: 20px;
+  height: 100%; /* Set the height of both inner divs to be equal */
+}
+
+.Main-div > div:first-child {
+  background-color: #f0f0f0;
+}
+
+.Main-div > div:last-child {
+  background-color: #e0e0e0;
+}
+
+/* Add styles for buttons and select */
+.newbtn {
+  margin-right: 10px; /* Add some space between buttons */
+}
+
+.select3 {
+  margin-right: 10px; /* Add some space between select and buttons */
+}
+
+
 .table-responsive {
     overflow-x: auto;
   }
@@ -55,7 +89,7 @@
     text-align: center; /* Center header names */
     height: 1px; /* Increase header height to 60px (adjust as needed) */
     vertical-align: middle; /* Vertically align header content */
-    padding-top: 91px;
+    
   }
   
   /* White lines between headers */
@@ -83,7 +117,7 @@
   /* Blue header style */
   .blue-header {
     font-weight: bold; /* Bold font weight */
-    background-color: blue !important; /* Blue background color */
+    background-color: #4FA8CF !important; /* Blue background color */
     color: white; /* White text color */
   }
   
@@ -141,7 +175,7 @@
     padding-top: 156px;
     color: white;
     font-weight: bolder;
-    background-color: blue;
+    background-color: #4FA8CF;
 
   }
   
@@ -178,7 +212,7 @@
   
   /* Add custom styles for the headers */
   .blue-header {
-    background-color: blue;
+    background-color:#4FA8CF;
     color: white;
   }
   
@@ -282,7 +316,7 @@ button{
 .newbtn{
   width: 25%;
     height: 25%;
-    background-color: blue !important;
+    background-color: #4FA8CF !important;
     color: white;
     font-weight: bold;
     border-radius: 3px;
