@@ -11,9 +11,6 @@
   align-items: center;
 }
 
-.checkbox input[type="checkbox"] {
-  display: none; /* Hide the default checkbox */
-}
 
 .checkbox-square {
   width: 16px;

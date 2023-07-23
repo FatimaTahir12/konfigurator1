@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ResponsiveTable from './ResponsiveTable';
-import { v4 as uuidv4 } from 'uuid'; // Import the uuid function
+//import { v4 as uuidv4 } from 'uuid'; // Import the uuid function
 import '../CSS/Main.css';
 
 const App = () => {
-  const Checkbox = ({ checked }) => (
-    <div className="checkbox">
-      <input type="checkbox" checked={checked} readOnly />
-      <div className="checkbox-square"></div>
-    </div>
-  );
 
   const initialRightTableData = [
     ['Column 1'],
@@ -20,6 +14,27 @@ const App = () => {
   ];
 
   const [rightTableData, setRightTableData] = useState(initialRightTableData);
+
+  const updatedRightTableData = rightTableData.map((row) =>
+    row.map((cell) => ({
+     // id: uuidv4(),
+      content: cell,
+    }))
+  );
+
+  const [rightTableCheckboxes, setRightTableCheckboxes] = useState(
+    updatedRightTableData.map((row) => row.map(() => false))
+  );
+
+  const Checkbox = ({ checked, onChange }) => (
+    <div className="checkbox">
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      <div className="checkbox-square"></div>
+    </div>
+  );
+
+
+
 
   const addRightTableColumn = () => {
     const updatedTable = rightTableData.map((row) => [...row, 'New Data']);
@@ -298,12 +313,15 @@ const App = () => {
     [doorDesignations, data.length]
   );
 
-  const updatedRightTableData = rightTableData.map((row) =>
-    row.map((cell) => ({
-      id: uuidv4(),
-      content: cell,
-    }))
-  );
+
+
+
+  const handleCheckboxChange = (rowIndex, cellIndex) => {
+    const updatedCheckboxes = rightTableCheckboxes.map((row, i) =>
+      row.map((checkbox, j) => (i === rowIndex && j === cellIndex ? !checkbox : checkbox))
+    );
+    setRightTableCheckboxes(updatedCheckboxes);
+  };
 
   return (
     <div className='Main-div' style={{ display: 'flex', width: '90%', backgroundColor: '#F4F4F4' }}>
@@ -331,7 +349,10 @@ const App = () => {
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
                     <td key={cell.id}>
-                      <Checkbox checked={false} />
+                      <Checkbox
+                        checked={rightTableCheckboxes[rowIndex][cellIndex]}
+                        onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
+                      />
                       <label htmlFor={cell.id}>{cell.content}</label>
                     </td>
                   ))}
