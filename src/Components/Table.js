@@ -1,20 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import ResponsiveTable from './ResponsiveTable';
+//import { v4 as uuidv4 } from 'uuid'; // Import the uuid function
 import '../CSS/Main.css';
-
+import Keys from '../Components/Keys'
 
 const App = () => {
 
-  // Right div table data
   const initialRightTableData = [
-    ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
-    ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5'],
-    ['Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10'],
-    ['Data 11', 'Data 12', 'Data 13', 'Data 14', 'Data 15'],
-    ['Data 16', 'Data 17', 'Data 18', 'Data 19', 'Data 20'],
+    ['Column 1'],
+    ['Data 1'],
+    ['Data 6'],
+    ['Data 11'],
+    ['Data 16'],
   ];
 
   const [rightTableData, setRightTableData] = useState(initialRightTableData);
+
+  const updatedRightTableData = rightTableData.map((row) =>
+    row.map((cell) => ({
+     // id: uuidv4(),
+      content: cell,
+    }))
+  );
+
+  const [rightTableCheckboxes, setRightTableCheckboxes] = useState(
+    updatedRightTableData.map((row) => row.map(() => false))
+  );
+
+  const Checkbox = ({ checked, onChange }) => (
+    <div className="checkbox">
+      <input type="checkbox" checked={checked} onChange={onChange} />
+   
+    </div>
+  );
+
+
+
 
   const addRightTableColumn = () => {
     const updatedTable = rightTableData.map((row) => [...row, 'New Data']);
@@ -44,25 +65,24 @@ const App = () => {
     // Add more sample data here
   ]);
 
-  const [numRowsToAdd, setNumRowsToAdd] = useState(1); // State to hold the number of rows to add
+  const [numRowsToAdd, setNumRowsToAdd] = useState(1);
 
-  // Function to handle changes in door designations
+
+  
+
   const handleChange = (id, value) => {
     setDoorDesignations((prevDoorDesignations) =>
       prevDoorDesignations.map((item) => (item.id === id ? { ...item, value } : item))
     );
   };
 
-  // Function to handle changes in cylinder type
   const handleTypeChange = (id, value) => {
     setData((prevData) =>
       prevData.map((item) => (item.id === id ? { ...item, type: value } : item))
     );
   };
 
-  // Function to handle changes in cylinder length (inside and outside)
   const handleLengthChange = (id, type, value) => {
-    // Ensure the value is not negative
     value = parseInt(value, 10);
     if (!isNaN(value)) {
       setData((prevData) =>
@@ -73,9 +93,7 @@ const App = () => {
     }
   };
 
-  // Function to handle changes in pc(s)
   const handlePcsChange = (id, value) => {
-    // Ensure the value is not negative
     value = parseInt(value, 10);
     if (!isNaN(value)) {
       setData((prevData) =>
@@ -84,14 +102,12 @@ const App = () => {
     }
   };
 
-  // Function to handle changes in keys checkbox
   const handleKeysChange = (id) => {
     setData((prevData) =>
       prevData.map((item) => (item.id === id ? { ...item, keys: !item.keys } : item))
     );
   };
 
-  // Function to add a new row to the table
   const handleAddRows = () => {
     const newRows = [];
     for (let i = 1; i <= numRowsToAdd; i++) {
@@ -124,7 +140,7 @@ const App = () => {
       },
     ]);
   };
-  // Function to remove a row from the table
+
   const handleRemoveRow = (id) => {
     setData((prevData) => prevData.slice(0, prevData.length - 1));
   };
@@ -301,12 +317,22 @@ const App = () => {
     [doorDesignations, data.length]
   );
 
+
+
+
+  const handleCheckboxChange = (rowIndex, cellIndex) => {
+    const updatedCheckboxes = rightTableCheckboxes.map((row, i) =>
+      row.map((checkbox, j) => (i === rowIndex && j === cellIndex ? !checkbox : checkbox))
+    );
+    setRightTableCheckboxes(updatedCheckboxes);
+  };
+
+
   return (
     <div className='Main-div' style={{ display: 'flex', width: '90%', backgroundColor: '#F4F4F4' }}>
       <div style={{ flex: '1', width: '50%', backgroundColor: '#f0f0f0', padding: '20px' }}>
         <ResponsiveTable columns={columns} data={data} />
         <div className="last-container" style={{ textAlign: 'center', marginTop: '20px' }}>
-
           <button className="newbtn" onClick={handleAddRows1}>+</button>
           {data.length > 2 && <button className="newbtn" onClick={() => handleRemoveRow(data[data.length - 1].id)}>-</button>}
           <select className='select3'
@@ -320,27 +346,16 @@ const App = () => {
         </div>
       </div>
 
-      <div style={{ flex: '1', width: '50%', backgroundColor: '#e0e0e0', padding: '20px', overflowX: 'auto' }}>
-        {/* Content for the right div */}
-        <h2>Right Div with Table</h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ minWidth: '600px', width: '100%', borderSpacing: '10px' }}>
-            <tbody>
-              {rightTableData.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <button onClick={addRightTableColumn}>Add Column (+)</button>
-          <button onClick={deleteRightTableColumn}>Delete Column (-)</button>
-        </div>
-      </div>
+<Keys/>
+
+
+
+
+
+
+
+
+
     </div>
   );
 };
