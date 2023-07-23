@@ -1,0 +1,322 @@
+/* Add Bootstrap CSS to your project */
+/* For example, using CDN: */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" /> */
+
+/* Custom CSS for table responsiveness */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Custom CSS for table lines */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #dddddd;
+    padding: 0.5rem; /* Use em unit for padding */
+    text-align: left;
+    font-size: 1rem; /* Use em unit for font size */
+  }
+  
+  /* Custom CSS for horizontal lines */
+  .table th.pos-header,
+  .table th.keys-header {
+    background-color: gray;
+    color: black;
+  }
+  
+  .table th.pos-header::before,
+  .table th.keys-header::before {
+    content: '';
+    position: absolute;
+    top: -1px; /* Position the line above the header */
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: white; /* White color for the line */
+  }
+  
+  .table th.pos-header::after,
+  .table th.keys-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Position the line below the header */
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: white; /* White color for the line */
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+    text-align: center; /* Center header names */
+    height: 1px; /* Increase header height to 60px (adjust as needed) */
+    vertical-align: middle; /* Vertically align header content */
+    padding-top: 91px;
+  }
+  
+  /* White lines between headers */
+  .table th + th {
+    border-left: 1px solid white;
+  }
+  
+  /* Media query for smaller screen sizes */
+  @media (max-width: 768px) {
+    .table {
+      width: 100%; /* Full-width table for smaller screens */
+    }
+  
+    .table th,
+    .table td {
+      font-size: 0.8rem; /* Decrease font size for smaller screens */
+    }
+  }
+  
+  /* Regular header style */
+  .regular-header {
+    font-weight: normal; /* Regular font weight */
+  }
+  
+  /* Blue header style */
+  .blue-header {
+    font-weight: bold; /* Bold font weight */
+    background-color: blue !important; /* Blue background color */
+    color: white; /* White text color */
+  }
+  
+  /* Custom CSS for setting the width of the columns */
+  .table th:nth-child(1),
+  .table td:nth-child(1) {
+    width: 0%;
+    min-width: 1%;
+    text-align: center;
+  }
+
+  .table th:nth-child(1){
+    padding-top: 2px;
+  }
+
+  
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 0%;
+    min-width: 0%;
+  }
+
+  .table td:nth-child(3) {
+  
+    text-align: center;
+  }
+  
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    width: 20%;
+    min-width: 20%;
+  }
+  
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    width: 7%;
+    min-width: 15%;
+  }
+
+  .table td:nth-child(5) {
+    width: 0%;
+    min-width: 15%;
+  }
+
+  .table td:nth-child(6) {
+    background-color: white;
+    text-align: center;
+  }
+  
+  .table th:nth-child(5) {
+    padding-top: 156px;
+  }
+
+  .table th:nth-child(6) {
+    padding-top: 156px;
+    color: white;
+    font-weight: bolder;
+    background-color: blue;
+
+  }
+  
+  .table th:nth-child(6),
+  .table td:nth-child(6) {
+    width: 6%;
+    min-width: 70%;
+  }
+
+  .table th:nth-child(7) {
+   background-color: #ccc !important;
+   color: #000;
+   font-weight: lighter;
+  }
+
+  .table td:nth-child(6) {
+    background-color: rgb(189, 182, 182);
+  }
+
+  .table td:nth-child(7) {
+    width: 80%;
+    min-width: 70%;
+  }
+
+
+  
+  /* Custom CSS for the table box */
+  .table-box {
+    border: 1px solid #ddd; /* Add border around the table */
+    padding: 20px; /* Add some padding to the table */
+    max-width: 43%; /* Set maximum width for the table box (adjust as needed) */
+    margin: 0 auto; /* Center the table box horizontally */
+  }
+  
+  /* Add custom styles for the headers */
+  .blue-header {
+    background-color: blue;
+    color: white;
+  }
+  
+  .regular-header {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  .grey-header {
+    background-color: grey;
+    color: white;
+  }
+  
+  .bottom-header {
+    vertical-align: bottom;
+    padding-bottom: 5px;
+  }
+  
+  /* Custom CSS for row height */
+  .table tr {
+    height: 10px !important; /* Set row height to 10px */
+  }
+  
+  /* Custom CSS for rows in tbody */
+  .table tbody tr {
+    border-top: 2px solid grey; /* Add 2px solid grey border to the top of each row */
+    border-bottom: 2px solid grey; /* Add 2px solid grey border to the bottom of each row */
+  }
+  
+  /* Custom CSS to remove the column lines in the tbody */
+  .table tbody td {
+    border: none; /* Remove the border for table cells in the tbody */
+  }
+
+  .grey-row {
+    background-color: rgb(189, 182, 182);
+  }
+
+  input{
+    border-style: none;
+    color: grey;
+  }
+
+  select{
+    width: 80%;
+    border-style: none;
+    border-radius: 2px;
+    height: 26px;
+    color: grey;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+  }
+
+/* Main.css */
+/* ... (existing CSS code) */
+
+.pink-row {
+  background-color: pink;
+}
+
+button{
+  border-style: none;
+  background: transparent !important;
+}
+
+.number{
+  width: 20%;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.custom-checkbox.crossed {
+  position: relative;
+  text-align: center;
+  color: #000;
+}
+
+.custom-checkbox.crossed::before {
+  content: 'X';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.crossed {
+  text-decoration: line-through;
+}
+
+.newbtn{
+  width: 25%;
+    height: 25%;
+    background-color: blue !important;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.last-container{
+  display: flex;
+    flex-direction: row;
+    gap: 6%;
+    width: 7%;
+}
+
+.select3{
+  width: 64% !important;
+    border: 1px solid grey;
+    border-radius: 3px;
+    height: 20px;
+}
+
+
+
+.blue-header.grey-header {
+  height: 10rem;
+}
+
+/* Custom CSS for the rows */
+.grey-row {
+  height: 10rem;
+}
+
+/* Custom CSS for the "Keys" checkbox cell */
+.table .table-cell.keys-cell {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
