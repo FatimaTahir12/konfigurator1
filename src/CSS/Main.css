@@ -5,12 +5,10 @@
 /* Custom CSS for table responsiveness */
 
 /* ... (existing CSS styles) */
-
 .checkbox {
   display: flex;
   align-items: center;
 }
-
 
 .checkbox-square {
   width: 16px;

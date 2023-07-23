@@ -1,58 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ResponsiveTable from './ResponsiveTable';
+import RightDivTable from './RightDiv';
 //import { v4 as uuidv4 } from 'uuid'; // Import the uuid function
 import '../CSS/Main.css';
 
 const App = () => {
 
-  const initialRightTableData = [
-    ['Column 1'],
-    ['Data 1'],
-    ['Data 6'],
-    ['Data 11'],
-    ['Data 16'],
-  ];
-
-  const [rightTableData, setRightTableData] = useState(initialRightTableData);
-
-  const updatedRightTableData = rightTableData.map((row) =>
-    row.map((cell) => ({
-     // id: uuidv4(),
-      content: cell,
-    }))
-  );
-
-  const [rightTableCheckboxes, setRightTableCheckboxes] = useState(
-    updatedRightTableData.map((row) => row.map(() => false))
-  );
-
-  const Checkbox = ({ checked, onChange }) => (
-    <div className="checkbox">
-      <input type="checkbox" checked={checked} onChange={onChange} />
-      <div className="checkbox-square"></div>
-    </div>
-  );
-
-
-
-
-  const addRightTableColumn = () => {
-    const updatedTable = rightTableData.map((row) => [...row, 'New Data']);
-    setRightTableData(updatedTable);
-  };
-
-  const deleteRightTableColumn = () => {
-    if (rightTableData[0].length > 1) {
-      const updatedTable = rightTableData.map((row) => {
-        const newRow = [...row];
-        newRow.pop();
-        return newRow;
-      });
-      setRightTableData(updatedTable);
-    }
-  };
-
-  const [doorDesignations, setDoorDesignations] = useState([
+  
+ const [doorDesignations, setDoorDesignations] = useState([
     { id: 1, value: 'Tur 1' },
     { id: 2, value: 'Tur 2' },
     // Add more door designations here
@@ -96,12 +51,6 @@ const App = () => {
         prevData.map((item) => (item.id === id ? { ...item, 'pc(s)': value } : item))
       );
     }
-  };
-
-  const handleKeysChange = (id) => {
-    setData((prevData) =>
-      prevData.map((item) => (item.id === id ? { ...item, keys: !item.keys } : item))
-    );
   };
 
   const handleAddRows = () => {
@@ -314,15 +263,6 @@ const App = () => {
   );
 
 
-
-
-  const handleCheckboxChange = (rowIndex, cellIndex) => {
-    const updatedCheckboxes = rightTableCheckboxes.map((row, i) =>
-      row.map((checkbox, j) => (i === rowIndex && j === cellIndex ? !checkbox : checkbox))
-    );
-    setRightTableCheckboxes(updatedCheckboxes);
-  };
-
   return (
     <div className='Main-div' style={{ display: 'flex', width: '90%', backgroundColor: '#F4F4F4' }}>
       <div style={{ flex: '1', width: '50%', backgroundColor: '#f0f0f0', padding: '20px' }}>
@@ -342,29 +282,7 @@ const App = () => {
       </div>
       <div style={{ flex: '1', width: '50%', backgroundColor: '#e0e0e0', padding: '20px', overflowX: 'auto' }}>
         <h2>Right Div with Table</h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ minWidth: '600px', width: '100%', borderSpacing: '10px' }}>
-            <tbody>
-              {updatedRightTableData.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={cell.id}>
-                      <Checkbox
-                        checked={rightTableCheckboxes[rowIndex][cellIndex]}
-                        onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
-                      />
-                      <label htmlFor={cell.id}>{cell.content}</label>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <button onClick={addRightTableColumn}>Add Column (+)</button>
-          <button onClick={deleteRightTableColumn}>Delete Column (-)</button>
-        </div>
+        <RightDivTable/>
       </div>
     </div>
   );
