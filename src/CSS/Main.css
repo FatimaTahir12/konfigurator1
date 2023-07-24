@@ -1,3 +1,5 @@
+
+
 /* Add Bootstrap CSS to your project */
 /* For example, using CDN: */
 /* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" /> */
@@ -389,7 +391,37 @@ button{
   transform: rotate(-90deg);
     transform-origin: left 0;
     position: relative;
-    bottom: -55px;
+ 
     border: 2px solid red !important;
-    left: 9px;
+    left: 33px;
+    width: 8rem;
 }
+
+.text-box{
+  width: 2rem;
+}
+
+/* Main.css */
+
+/* You can add any other global styles here */
+
+.table-row {
+  /* Add your styling for the table rows here */
+  display: table-row;
+}
+
+/* Style for the first row */
+.table-row:first-child {
+  /* Height of the first row */
+  height: 11rem;
+}
+
+/* Style for the second row and subsequent rows */
+.table-row:not(:first-child) {
+  /* Height of the second row and subsequent rows */
+  height: 2rem;
+  /* Top border of 2px solid black for all rows */
+  border-top: 2px solid black;
+}
+
+/* Add any other styles for the table cells (td/th) here */
